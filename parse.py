@@ -36,7 +36,12 @@ def remove_lines_before_regex(text, patterns):
             return '\n'.join(lines[i:])
 
 
-def parse(filename):
+def parse(filename: str) -> pd.DataFrame:
+    """
+Parse a Legislative Council transcript file and extract speaker names and their speeches.
+    :param filename: Path to the file to parse (PDF, HTML, or DOC).
+    :return: DataFrame containing speakers and their corresponding speeches.
+    """
     file_type = filename.split('.')[-1].lower()
     if file_type == 'pdf':
         text = extract_text(filename)
